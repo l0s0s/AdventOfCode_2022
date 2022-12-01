@@ -7,7 +7,7 @@ import (
 )
 
 func Solution(scanner *bufio.Scanner) (int, error) {
-	biggest, _, err := handleLine(scanner, 0, 0)
+	biggest, err := handleLine(scanner, 0, 0)
 	if err != nil {
 		return 0, fmt.Errorf("failed to handle line: %w", err)
 	}
@@ -15,9 +15,9 @@ func Solution(scanner *bufio.Scanner) (int, error) {
 	return biggest, nil
 }
 
-func handleLine(scanner *bufio.Scanner, biggest, elfCalories int) (int, int, error) {
+func handleLine(scanner *bufio.Scanner, biggest, elfCalories int) (int, error) {
 	if !scanner.Scan() {
-		return biggest, elfCalories, nil
+		return biggest, nil
 	}
 
 	if scanner.Text() == "" {
@@ -30,7 +30,7 @@ func handleLine(scanner *bufio.Scanner, biggest, elfCalories int) (int, int, err
 
 	num, err := strconv.Atoi(scanner.Text())
 	if err != nil {
-		return 0, 0, fmt.Errorf("failed to parse number: %w", err)
+		return 0, fmt.Errorf("failed to parse number: %w", err)
 	}
 
 	return handleLine(scanner, biggest, elfCalories+num)
