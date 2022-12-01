@@ -28,12 +28,11 @@ func handleLine(scanner *bufio.Scanner, biggest [3]int, elfCalories int) ([3]int
 
 	if scanner.Text() == "" {
 		if elfCalories > biggest[0] {
-			biggest[0] = elfCalories
+			biggest[0], elfCalories = elfCalories, biggest[0]
 		}
 
 		if elfCalories > biggest[1] && elfCalories < biggest[0] {
-			biggest[2] = biggest[1]
-			biggest[1] = elfCalories
+			biggest[1], elfCalories = elfCalories, biggest[1]
 		}
 
 		if elfCalories > biggest[2] && elfCalories < biggest[1] {
