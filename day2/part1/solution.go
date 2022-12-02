@@ -3,7 +3,6 @@ package part1
 import (
 	"bufio"
 	"day2/game"
-	"day2/gameitem"
 	"strings"
 )
 
@@ -26,7 +25,7 @@ func Solution(scanner *bufio.Scanner) (int, error) {
 
 		scores := strings.Split(line, " ")
 
-		score := game.CompareGameItems(gameitem.New(Scores[scores[1]]), gameitem.New(Scores[scores[0]]))
+		score := game.CompareGameItems(Scores[scores[1]], Scores[scores[0]])
 		totalScore += score
 	}
 

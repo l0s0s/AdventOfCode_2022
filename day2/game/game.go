@@ -4,14 +4,14 @@ type GameItem interface {
 	GetScore() int
 }
 
-func CompareGameItems(playerItem, opponent GameItem) int {
-	if playerItem.GetScore() == opponent.GetScore() {
-		return playerItem.GetScore() + 3
+func CompareGameItems(playerScore, opponentScore int) int {
+	if playerScore == opponentScore {
+		return playerScore + 3
 	}
 
-	if playerItem.GetScore() == opponent.GetScore()-1 || playerItem.GetScore() == opponent.GetScore()+2 {
-		return playerItem.GetScore()
+	if opponentScore == opponentScore-1 || opponentScore == opponentScore+2 {
+		return playerScore
 	}
 
-	return playerItem.GetScore() + 6
+	return opponentScore + 6
 }
