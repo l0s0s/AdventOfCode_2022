@@ -1,5 +1,16 @@
 package game
 
+var (
+	Scores = map[string]int{
+		"A": 1,
+		"X": 1,
+		"B": 2,
+		"Y": 2,
+		"C": 3,
+		"Z": 3,
+	}
+)
+
 type GameItem interface {
 	GetScore() int
 }
@@ -9,9 +20,9 @@ func CompareGameItems(playerScore, opponentScore int) int {
 		return playerScore + 3
 	}
 
-	if opponentScore == opponentScore-1 || opponentScore == opponentScore+2 {
+	if playerScore == opponentScore-1 || playerScore == opponentScore+2 {
 		return playerScore
 	}
 
-	return opponentScore + 6
+	return playerScore + 6
 }
