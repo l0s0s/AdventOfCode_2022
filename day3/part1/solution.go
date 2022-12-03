@@ -2,21 +2,9 @@ package part1
 
 import (
 	"bufio"
+	"day3/alphabet"
 	"strings"
-	"unicode"
 )
-
-func alphaNum(s rune) int {
-	switch {
-	case unicode.IsLower(s):
-		return int(unicode.ToUpper(s)) - 64
-	case unicode.IsUpper(s):
-		return int(unicode.ToLower(s) - 70)
-	}
-
-	return 0
-
-}
 
 func Solution(scanner *bufio.Scanner) (int, error) {
 	total := 0
@@ -28,7 +16,7 @@ func Solution(scanner *bufio.Scanner) (int, error) {
 
 		for _, char := range part1 {
 			if strings.Contains(part2, string(char)) {
-				score := alphaNum(char)
+				score := alphabet.Num(char)
 
 				total += score
 				break
