@@ -6,23 +6,16 @@ import (
 	"unicode"
 )
 
-func swapCase(s rune) rune {
+func alphaNum(s rune) int {
 	switch {
 	case unicode.IsLower(s):
-		return unicode.ToUpper(s)
+		return int(unicode.ToUpper(s)) - 64
 	case unicode.IsUpper(s):
-		return unicode.ToLower(s) - 6
+		return int(unicode.ToLower(s) - 70)
 	}
 
-	return s
+	return 0
 
-}
-
-func alphaNum(letter rune) int {
-	char := int(swapCase(letter))
-	char -= 64
-
-	return char
 }
 
 func Solution(scanner *bufio.Scanner) (int, error) {
