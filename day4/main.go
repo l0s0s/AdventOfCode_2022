@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"day4/part1"
+	"day4/part2"
 	"fmt"
 	"log"
 	"os"
@@ -23,5 +24,19 @@ func main() {
 		log.Fatal("failed to solve part 1: %w", err)
 	}
 
-	fmt.Printf("part 1: %d", part1Answer)
+	file, err = os.Open("input.txt")
+	if err != nil {
+		log.Fatal("failed to read input: %w", err)
+	}
+
+	defer file.Close()
+
+	scanner = bufio.NewScanner(file)
+
+	part2Answer, err := part2.Solution(scanner)
+	if err != nil {
+		log.Fatal("failed to solve part 2: %w", err)
+	}
+
+	fmt.Printf("part 1: %d, part 2: %d", part1Answer, part2Answer)
 }
